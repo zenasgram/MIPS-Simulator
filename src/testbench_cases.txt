@@ -1,0 +1,147 @@
+ADDU_1:ADDU:120:zl8615:30+90
+ADDIU_1:ADDIU:46:zl8615:30+16
+SUBU_1:SUBU:226:zl8615:60-90
+SUB_1:SUB:55:zl8615:77-22
+ADD_1:ADD:54:zl8615:130+180, test for byte 4
+ADDI_1:ADDI:246:zl8615:180+1792=1972, shifted right by 3 to append
+AND_1:AND:32:zl8615:0x11170 & 0x89A0 -> byte 4: 0010 0000 
+ANDI_1:ANDI:9:zl8615:0x1E09 & 0x7FFF -> byte 4: 0000 1001
+OR_1:OR:240:zl8615:0x11170 | 0x89A0 -> byte 4: 1111 0000
+XOR_1:XOR:208:zl8615:0x11170 ^ 0x89A0 -> byte 4: 1101 0000
+XORI_1:XORI:246:zl8615:0x1E09 ^ 0x7FFF -> byte 4: 1111 0110
+ORI_1:ORI:86:zl8615:0x1E240 | 0x3456 -> byte 4: 0101 0110
+SLL_1:SLL:224:zl8615:0x12345678 shifted left by 2
+SLLV_1:SLLV:64:zl8615:0x08012510 shifted left by 2
+SRL_1:SRL:48:zl8615:0x021DA308 shifted right by 4
+SRLV_1:SRLV:146:zl8615:0x08012510 shifted right by 9
+SRA_1:SRA:232:zl8615:0xA0124122 shifted right by 26
+SRAV_1:SRAV:244:zl8615:0xD3679610 shifted right by 26
+SLT_1:SLT:1:zl8615:test for condition->true
+SLTI_1:SLTI:0:zl8615:test for condition->false
+SLTU_1:SLTU:1:zl8615:test for condition->true
+SLTIU_1:SLTIU:1:zl8615:test for condition->true
+LW_1:LW:100:zl8615:load test
+LUI_1:LUI:18:zl8615:load upper immediate, byte 1:00010010 
+LHU_1:LHU:86:zl8615:load unsigned 16bit data into byte 3 & 4, test for extended bit
+LH_1:LH:214:zl8615:load signed 16bit data into byte 3 & 4,test for extended bit
+LBU_1:LBU:69:zl8615:load unsigned 8bit data into byte 4, test for extended bit
+LB_1:LB:197:zl8615:load signed 8bit data into byte 4, test for extended bit
+SW_1:SW:10:zl8615:store word in addr_data
+SH_1:SH:10:zl8615:store 16bit in addr_data, byte 3 & 4
+SB_1:SB:10:zl8615:store 8bit in addr_data, byte 4
+MTHI_1:MTHI:100:zl8615:put 100 in hi
+MTLO_1:MTLO:100:zl8615:put 100 in lo
+MULT_1:MULT:132:zl8615:30 x 30
+MULT_2:MULT:255:zl8615:2013265919 x 2013265919
+MULT_3:MULT:1:zl8615:4294967295 x 4294967295
+MULT_4:MULT:0:jc5616:0x80000000 x 0x80000000
+MULTU_1:MULTU:1:zl8615:4294967295 x 4294967295
+DIVU_1:DIVU:1:zl8615:4294967295 / 4294967295
+DIV_1:DIV:42:zl8615:300 / 7
+BEQ_1:BEQ:46:zl8615:branch executes
+BEQ_2:BEQ:120:zl8615:branch does not execute
+BNE_1:BNE:21:zl8615:branch executes
+BNE_2:BNE:120:zl8615:branch does not execute
+BLTZ_1:BLTZ:3:zl8615:branch executes
+BLTZ_2:BLTZ:120:zl8615:branch does not execute
+BLEZ_1:BLEZ:15:zl8615:branch executes
+BLEZ_2:BLEZ:15:zl8615:branch executes
+BLEZ_3:BLEZ:120:zl8615:branch does not execute
+BGTZ_1:BGTZ:100:zl8615:branch executes
+BGTZ_2:BGTZ:120:zl8615:branch does not execute
+BGEZ_1:BGEZ:210:zl8615:branch executes
+BGEZ_2:BGEZ:120:zl8615:branch does not execute
+BLTZAL_1:BLTZAL:55:zl8615:branch executes
+BLTZAL_2:BLTZAL:120:zl8615:branch does not execute
+BGEZAL_1:BGEZAL:11:zl8615:branch executes
+BGEZAL_2:BGEZAL:11:zl8615:branch executes
+BGEZAL_3:BGEZAL:120:jc5616:branch does not execute
+LWL_1:LWL:50:zl8615:checking lwl
+LWR_1:LWR:86:zl8615:checking lwr
+J_1:J:25:zl8615:j executes
+JAL_1:JAL:15:jc5616:jal executes
+JR_1:JR:5:zl8615:test jr$zero exits
+JR_2:J:27:jc5616:jr executes
+JALR_1:JALR:15:jc5616:
+ADDU_2:ADDU:0:zl8615:max+1
+ADDU_3:ADDU:0:zl8615:0+0
+ADDIU_2:ADDIU:0:zl8615:max+1
+ADDIU_3:ADDIU:0:zl8615:0+0
+SUBU_2:SUBU:255:zl8615:50-51
+SUBU_3:SUBU:0:zl8615:max-max
+SUB_2:SUB:99:zl8615:77-(-22)
+SUB_3:SUB:246:zl8615:overflow
+SUB_4:SUB:246:zl8615:overflow
+ADD_2:ADD:246:zl8615:overflow
+ADD_3:ADD:246:zl8615:overflow
+ADDI_2:ADDI:246:zl8615:overflow
+ADDI_3:ADDI:246:zl8615:overflow
+AND_2:AND:0:zl8615:0x7FFFFFFF & 0x80000000
+ANDI_2:ANDI:5:zl8615:0x7FFFFFFF & 0x5
+OR_2:OR:255:zl8615:0x7FFFFFFF | 0x80000000
+XOR_2:XOR:255:zl8615:0x7FFFFFFF ^ 0x80000000
+XOR_3:XOR:248:zl8615:0x7FFFFFF8 ^ 0x80000000
+XORI_2:XORI:250:zl8615:0x7FFFFFFF ^ 0x5
+ORI_2:ORI:255:zl8615:0x7FFFFFFF | 0x5
+SLL_2:SLL:2:zl8615:test for fed-in bit 0
+SLLV_2:SLLV:2:zl8615:test for fed-in bit 0
+SRL_2:SRL:64:zl8615:test for extended bit 0
+SRLV_2:SRLV:64:zl8615:test for extended bit 0
+SRA_2:SRA:192:zl8615:test for extended bit
+SRAV_2:SRAV:192:zl8615:test for extended bit
+SLT_2:SLT:0:zl8615:test for condition->false
+SLT_3:SLT:1:zl8615:test for condition->true, due to -ve representation
+SLTI_2:SLTI:1:zl8615:test for condition->true
+SLTI_3:SLTI:1:zl8615:test for condition->true, due to -ve representation
+SLTU_2:SLTU:0:zl8615:test for condition->false, due to unsigned representation
+SLTIU_2:SLTIU:0:zl8615:test for condition->false, due to unsigned representation
+LW_2:LW:5:zl8615:read word from addr_instr
+LHU_2:LHU:7:zl8615:read halfword from addr_instr
+LH_2:LH:2:zl8615: read halfword from addr_instr
+LBU_2:LBU:9:zl8615: read byte from addr_instr
+LB_2:LB:255:zl8615: read byte from addr_instr, test for extend bit 
+SW_2:SW:245:zl8615:Invalid Address
+SH_2:SH:245:zl8615:Misaligned Address
+SB_2:SB:245:zl8615:Invalid Address
+MFHI_1:MFHI:96:zl8615:MFHi after MULT
+MFLO_1:MFLO:50:zl8615:MFLO after MULT
+MULT_5:MULT:206:zl8615:-ve x +ve - test lo
+MULT_6:MULT:255:zl8615:-ve x +ve - test hi
+MULT_7:MULT:0:zl8615:max +ve x max -ve - test lo
+MULT_8:MULT:6:zl8615:max +ve x max -ve - test hi
+MULTU_2:MULTU:206:zl8615:-ve x +ve - test lo
+MULTU_3:MULTU:9:zl8615:ve x +ve - test hi
+MULTU_4:MULTU:0:zl8615:max +ve x max -ve - test lo
+MULTU_5:MULTU:1:zl8615:+ve x max -ve - test hi
+DIVU_2:DIVU:246:zl8615:div by zero exception
+DIVU_3:DIVU:2:zl8615:quotient test
+DIVU_4:DIVU:3:zl8615:remainder test
+DIV_2:DIV:246:zl8615:div by zero exception
+DIV_3:DIV:4:zl8615:quotient test +ve/+ve
+DIV_4:DIV:2:zl8615:remainder test +ve/+ve
+DIV_5:DIV:252:zl8615:quotient test -ve/+ve
+DIV_6:DIV:254:zl8615:remainder test -ve/+ve
+DIV_7:DIV:252:zl8615:quotient test +ve/-ve
+DIV_8:DIV:2:zl8615:remainder test +ve/-ve
+DIV_9:DIV:1:zl8615:remainder test +ve/+ve
+DIV_10:DIV_10:255:zl8615:remainder test -ve/-ve
+LB_3:LB:18:zl8615:check highest byte
+LB_4:LB:52:zl8615:check second highest byte
+LB_5:LB:86:zl8615:check third highest byte
+LB_6:LB:120:zl8615:check lowest byte
+LBU_3:LBU:18:zl8615:check highest byte
+LBU_4:LBU:52:zl8615:check second highest byte
+LBU_5:LBU:86:zl8615:check third highest byte
+LBU_6:LBU:120:zl8615:check lowest byte
+LH_3:LH:255:zl8615:check sign extension
+LHU_3:LHU:1:zl8615:check sign extension
+LW_3:LW:245:zl8615:read misaligned word
+LW_4:LW:245:zl8615:read word from addr_null
+LW_5:LW:245:zl8615:read word from out of bounds
+LW_6:LW:245:zl8615:read word from empty
+LH_4:LH:245:zl8615:read halfword from empty
+LB_7:LB:245:zl8615:read byte from empty
+PUTC_1:PUTC:5:zl8615:write to putchar
+PUTC_2:PUTC:245:zl8615:read from putchar
+GETC_1:GETC:80:zl8615:read from getchar
+GETC_2:GETC:245:zl8615:write to getchar

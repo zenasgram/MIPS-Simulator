@@ -1,0 +1,61 @@
+#!/bin/bash
+DEBUGLEVEL=0
+CSVOUTPUT=0
+INPUT=./src/testbench_cases.txt
+OUTPUTFILE=./test/output/SPIM.csv
+MIPS_SIMULATOR=$1
+OUTPUTSEPARATOR=","
+IFS=:
+
+
+if [ $CSVOUTPUT -eq 1 ];
+then
+	mkdir -p ./test/output
+	rm $OUTPUTFILE
+fi
+
+[ ! -f $INPUT ] && { echo "$INPUT file not found"; exit 99; }
+while read TESTID INST VAL AUTHOR REMARKS
+do
+	TEST_PATH='test-binaries/'
+	TEST_PATH+=${TESTID,,}
+	TEST_PATH+='.bin'
+	timeout 2 $MIPS_SIMULATOR $TEST_PATH
+	TESTOUTPUT=$?
+	OUTPUT=$TESTID$OUTPUTSEPARATOR
+	OUTPUT+=$INST$OUTPUTSEPARATOR
+	if [ $TESTOUTPUT -eq $VAL ];
+	then
+		OUTPUT+="Pass,"
+	else
+		OUTPUT+="Fail,"
+	fi
+	OUTPUT+=$AUTHOR
+	if [ "$REMARKS" != "" ];
+	then
+		OUTPUT+=$OUTPUTSEPARATOR$REMARKS
+		if [ $TESTOUTPUT -ne $VAL ]
+		then
+			OUTPUT+="| Expected Output "
+			OUTPUT+=$VAL
+			OUTPUT+="|Actual Output "
+			OUTPUT+=$TESTOUTPUT
+		fi
+	elif [ $TESTOUTPUT -ne $VAL ]
+	then
+		OUTPUT+=$OUTPUTSEPARATOR
+		OUTPUT+="Expected Output "
+		OUTPUT+=$VAL
+		OUTPUT+="|Actual Output "
+		OUTPUT+=$TESTOUTPUT
+	fi
+	if [ $DEBUGLEVEL -eq 1 ];
+	then
+		echo $TESTOUTPUT
+	fi
+	if [ $CSVOUTPUT -eq 1 ];
+	then
+		echo $OUTPUT >> $OUTPUTFILE
+	fi
+	echo $OUTPUT	
+done < $INPUT
